@@ -42,7 +42,7 @@ R CMD INSTALL SPARK_1.0.0.tar.gz
 
 
 
-## Sample Code: Analysis of Breast Cancer Data
+## Analysis of Breast Cancer Data
 ```R
     library('SPARK')
     load("~/data/Layer2_BC_Count.rds")
