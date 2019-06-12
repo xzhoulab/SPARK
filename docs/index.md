@@ -20,7 +20,7 @@ variant: markdown_github
 
 ![SPARK\_pipeline](pipline.png)
 
-## SPARK
+### SPARK
 
 **SPARK** is an efficient method to identify genes with spatial expression pattern. 
 The intended applications are spatially resolved RNA-sequencing from e.g.
@@ -28,7 +28,7 @@ Spatial Transcriptomics, or *in situ* gene expression measurements from
 e.g. SeqFISH, Merfish.
 
 
-## Analysis of Breast Cancer Data
+### Analysis of Breast Cancer Data
 ```{r}
     library('SPARK')
     load("~/data/Layer2_BC_Count.rds")
@@ -47,7 +47,7 @@ e.g. SeqFISH, Merfish.
 |LANCL2         |     0         |   0          |  0          |  0           |      0       |
 
 
-```R    
+```{r}    
     ## extract the coordinates from the rawdata
     info <- cbind.data.frame(x=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",1)),
                             y=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",2)),
