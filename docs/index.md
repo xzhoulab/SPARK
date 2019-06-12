@@ -22,21 +22,19 @@ variant: markdown_github
 
 ## SPARK
 
-**SPARK** is an efficient method to identify genes with spatial expression pattern. 
-The intended applications are spatially resolved RNA-sequencing from e.g.
-Spatial Transcriptomics, or *in situ* gene expression measurements from
-e.g. SeqFISH, Merfish.
+**SPARK** is an efficient method to identify genes with spatial expression pattern. The intended applications are spatially resolved RNA-sequencing from e.g., Spatial Transcriptomics, or *in situ* gene expression measurements from
+e.g., SeqFISH, or Merfish.
 
 
 ## Example: Breast Cancer Data
 
-Load the `SPARK` package and Breast cancer data set
+Load the `SPARK` package and Breast cancer data set.
 ```R
     library('SPARK')
     load("~/data/Layer2_BC_Count.rds")
      
 ```
-View the expression count matrix `rawcount`, each row denotes a gene and each column represents a cell/spot
+View the expression count matrix `rawcount`, each row denotes a gene and each column represents a cell/spot.
 ```R
 rawcount[1:5,1:5]
 
@@ -56,7 +54,7 @@ Extract the annotation information for each sample, i.e., location or coordinate
                              total_counts=apply(rawcount,2,sum))
     rownames(info) <- colnames(rawcount)
 ```
-Create a SPARK object for analysis. This step excludes the gene that are lowly expressed in each gene
+Create a SPARK object for analysis. This step excludes the gene that are lowly expressed in each gene.
 ```R 
     ## filter genes and cells/spots and 
     spark <- CreateSPARKObject(counts=rawcount, 
@@ -81,7 +79,7 @@ Fit the statistical model under the null hypothesis.
                        verbose = F)
 ```
 
-Test the spatially expressed pattern genes. By default, the kernel matrices are computed automatically, and check the positive definition of the kernel matrices. There is also a option to provide a kernel matrix by user.
+Test the spatially expressed pattern genes. By default, the kernel matrices are computed automatically, and check the positive definition of the kernel matrices. There is also an option to provide a kernel matrix by user.
 ```R 
     ## Calculating pval
     spark <- spark.test(spark, 
