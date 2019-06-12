@@ -29,7 +29,7 @@ e.g. SeqFISH, Merfish.
 
 
 ### Analysis of Breast Cancer Data
-```{r}
+```R
     library('SPARK')
     load("~/data/Layer2_BC_Count.rds")
      
@@ -37,7 +37,7 @@ e.g. SeqFISH, Merfish.
     rawcount[1:5,1:5]
 ```
 
-```
+```R
     17.907x4.967   18.965x5.003   18.954x5.995    17.846x5.993 20.016x6.019
 GAPDH   1   7   5   1   2
 USP4    1   0   0   0   0
@@ -46,7 +46,7 @@ CPEB1   0   0   0   0   0
 LANCL2  0   0   0   0   0
 ```
 
-```{r}    
+```R   
     ## extract the coordinates from the rawdata
     info <- cbind.data.frame(x=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",1)),
                             y=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",2)),
