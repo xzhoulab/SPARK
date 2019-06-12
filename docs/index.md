@@ -20,7 +20,7 @@ variant: markdown_github
 
 ![SPARK\_pipeline](pipline.png)
 
-### SPARK
+## Tool: SPARK
 
 **SPARK** is an efficient method to identify genes with spatial expression pattern. 
 The intended applications are spatially resolved RNA-sequencing from e.g.
@@ -52,14 +52,15 @@ Extract the annotation information for each sample, i.e., location or coordinate
 ```R   
     ## extract the coordinates from the rawdata
     info <- cbind.data.frame(x=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",1)),
-                            y=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",2)),
-                            total_counts=apply(rawcount,2,sum))
+                             y=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",2)),
+                             total_counts=apply(rawcount,2,sum))
     rownames(info) <- colnames(rawcount)
 ```
 Create a SPARK object for analysis. This step excludes the gene that are lowly expressed in each gene
 ```R 
     ## filter genes and cells/spots and 
-    spark <- CreateSPARKObject(counts=rawcount, location=info[,1:2],
+    spark <- CreateSPARKObject(counts=rawcount, 
+                                 location=info[,1:2],
                                  prectage = 0.1, 
                                  min_total_counts = 10)
 
@@ -68,22 +69,32 @@ Create a SPARK object for analysis. This step excludes the gene that are lowly e
 
     ## Take the first ten genes as an example
     spark@counts   <- spark@counts[1:10,]
-
-    ## Estimating Parameter Under Null
-    spark <- spark.vc(spark,covariates = NULL, lib_size=spark@lib_size, num_core=1,verbose=F)
-
-    ## Calculating pval
-    spark <- spark.test(spark, check_positive = T, verbose=F)
-    
-    ## Check pvals 
-    head(spark@res_mtest[,c("combined_pvalue","adjusted_pvalue")])
 ```
 
-|               | combined_pvalue | adjusted_pvalue |
-| ------------- | ------------- |------------- |
-|GAPDH       |7.477171e-09   | 1.683453e-07 |
-|MAPKAPK2    |1.016078e-01   | 5.952118e-01 |
-|MCL1        |1.149519e-08   | 1.683453e-07 |
-|TMEM109     |4.303998e-01   | 1.000000e+00 |
-|TMEM189     |6.189064e-01   | 1.000000e+00 |
-|ITPK1       |7.213287e-01   | 1.000000e+00 |
+```R 
+    ## Estimating Parameter Under Null
+    spark <- spark.vc(spark, 
+                       covariates = NULL, 
+                       lib_size = spark@lib_size, 
+                       num_core = 1,
+                       verbose = F)
+                       
+    ## Calculating pval
+    spark <- spark.test(spark, 
+                         check_positive = T, 
+                         verbose = F)
+    
+```
+
+Check p-values 
+```R 
+head(spark@res_mtest[,c("combined_pvalue","adjusted_pvalue")])
+
+    combined_pvalue   adjusted_pvalue
+GAPDH   7.477171e-09    1.683453e-07
+MAPKAPK2    1.016078e-01    5.952118e-01
+MCL1    1.149519e-08    1.683453e-07
+TMEM109 4.303998e-01    1.000000e+00
+TMEM189 6.189064e-01    1.000000e+00
+ITPK1   7.213287e-01    1.000000e+00
+```
