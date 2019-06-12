@@ -4,18 +4,18 @@ title: Installation
 permalink: /installation/
 ---
 
-`iDEA` is implemented as an R package, which can be installed from GitHub by:
+`SPARK` is implemented as an R package, which can be installed from GitHub by:
 
 #### 1. Install `devtools` if necessary
 ```r
 install.packages('devtools')
 ```
 
-#### 2. Install `iDEA`
+#### 2. Install `SPARK`
 ```r
-devtools::install_github('xzhoulab/iDEA')
+devtools::install_github('xzhoulab/SPARK')
 ```
 #### 3. Load package
 ```r
-library(iDEA)
+library(SPARK)
 ```
