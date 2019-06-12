@@ -17,31 +17,31 @@ variant: markdown_github
 
 ![SPARK\_pipeline](MethodOverview.png)
 
-## SPRINT
+## SPARK
 
-**SPRINT** is an efficient method to identify genes with spatial expression pattern. 
+**SPARK** is an efficient method to identify genes with spatial expression pattern. 
 The intended applications are spatially resolved RNA-sequencing from e.g.
 Spatial Transcriptomics, or *in situ* gene expression measurements from
 e.g. SeqFISH, Merfish.
 
 ## System requirements
-SPRINT has been tested on R 3.3.1 and is platform independent (tested on Linux, OS X and Windows)
+SPARK has been tested on R 3.3.1 and is platform independent (tested on Linux, OS X and Windows)
 Installation can then be done via the devtools package:
 
 ```R
 library('devtools')
-devtools::install_github('xzhoulab/SPRINT')
+devtools::install_github('xzhoulab/SPARK')
 ```
 Alternatively, installation can then be done from a local binary package from the shell:
 ```bash
-R CMD INSTALL SPRINT_1.0.0.tar.gz
+R CMD INSTALL SPARK_1.0.0.tar.gz
 ```
 
 
 
 ## Sample Code: Analysis of Breast Cancer Data
 ```R
-    library('SPRINT')
+    library('SPARK')
     load("~/data/Layer2_BC_Count.rds")
      
     ## rawcount matrix of genes by cells/spots
@@ -62,25 +62,25 @@ R CMD INSTALL SPRINT_1.0.0.tar.gz
                             total_counts=apply(rawcount,2,sum))
     rownames(info) <- colnames(rawcount)
 
-    ## filter genes and cells/spots and create the SPRINT object for following analysis
-    sprint <- CreateSPRINTObject(counts=rawcount, location=info[,1:2],
+    ## filter genes and cells/spots and create the SPARK object for following analysis
+    spark <- CreateSPARKObject(counts=rawcount, location=info[,1:2],
                                  prectage = 0.1, 
                                  min_total_counts = 10)
 
     ## total counts for each cell/spot
-    sprint@lib_size <- apply(sprint@counts, 2, sum)
+    spark@lib_size <- apply(spark@counts, 2, sum)
 
     ## Take the first ten genes as an example
-    sprint@counts   <- sprint@counts[1:10,]
+    spark@counts   <- spark@counts[1:10,]
 
     ## Estimating Parameter Under Null
-    sprint <- sprint.vc(sprint,covariates = NULL, lib_size=sprint@lib_size, num_core=1,verbose=F)
+    spark <- spark.vc(spark,covariates = NULL, lib_size=spark@lib_size, num_core=1,verbose=F)
 
     ## Calculating pval
-    sprint <- sprint.test(sprint, check_positive = T, verbose=F)
+    spark <- spark.test(spark, check_positive = T, verbose=F)
     
     ## Check pvals 
-    head(sprint@res_mtest[,c("combined_pvalue","adjusted_pvalue")])
+    head(spark@res_mtest[,c("combined_pvalue","adjusted_pvalue")])
 ```
 
 |               | combined_pvalue | adjusted_pvalue |
