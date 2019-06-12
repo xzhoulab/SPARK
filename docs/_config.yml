@@ -1,8 +1,8 @@
 # following https://github.com/jekyll/minima
-title: iDEA
-author: Shiquan Sun, Ying Ma and Xiang Zhou
+title: SPARK
+author: Shiquan Sun, Jiaqiang Zhu and Xiang Zhou
 email: xzhousph@umich.edu
-description: Integrative Differential Expression and Gene Set Enrichment Analysis for Single Cell RNAseq Studies
+description: Statistical Analysis of Spatial Expression Pattern for Spatially Resolved Transcriptomic Studies
 
 # Minima date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
