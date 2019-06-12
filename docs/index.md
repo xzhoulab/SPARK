@@ -15,7 +15,7 @@ md_document:
 variant: markdown_github
 ---
 
-![SPARK\_pipeline](MethodOverview.png)
+![SPARK\_pipeline](pipline.png)
 
 ## SPARK
 
