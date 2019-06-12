@@ -39,7 +39,7 @@ rss: rss
 # - about.md
 
 # Build settings
-theme: minima
+theme: jekyll-theme-cayman
 
 plugins:
 - jekyll-feed
