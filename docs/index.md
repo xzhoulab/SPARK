@@ -8,9 +8,9 @@
 layout: home
 author: "Shiquan Sun, Jiaqiang Zhu and Xiang Zhou"
 date: '2019-06-08'
-fontsize: 12pt
+fontsize: 10pt
 linkcolor: blue
-mainfont: Times New Roman
+mainfont: Times
 output:
 pdf_document: default
 html_document: default
@@ -20,7 +20,7 @@ variant: markdown_github
 
 ![SPARK\_pipeline](pipline.png)
 
-## Tool: SPARK
+## SPARK
 
 **SPARK** is an efficient method to identify genes with spatial expression pattern. 
 The intended applications are spatially resolved RNA-sequencing from e.g.
