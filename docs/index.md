@@ -29,7 +29,7 @@ e.g. SeqFISH, Merfish.
 
 
 ## Analysis of Breast Cancer Data
-```R
+```{r}
     library('SPARK')
     load("~/data/Layer2_BC_Count.rds")
      
