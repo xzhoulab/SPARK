@@ -71,6 +71,7 @@ Create a SPARK object for analysis. This step excludes the gene that are lowly e
     spark@counts   <- spark@counts[1:10,]
 ```
 
+Fit the statistical model under the null
 ```R 
     ## Estimating Parameter Under Null
     spark <- spark.vc(spark, 
@@ -78,7 +79,10 @@ Create a SPARK object for analysis. This step excludes the gene that are lowly e
                        lib_size = spark@lib_size, 
                        num_core = 1,
                        verbose = F)
-                       
+```
+
+Test the spatially expressed pattern genes
+```R 
     ## Calculating pval
     spark <- spark.test(spark, 
                          check_positive = T, 
@@ -86,7 +90,7 @@ Create a SPARK object for analysis. This step excludes the gene that are lowly e
     
 ```
 
-Check p-values 
+Output the final results, i.e., combined p-values, adjusted p-values, etc. 
 ```R 
 head(spark@res_mtest[,c("combined_pvalue","adjusted_pvalue")])
 
