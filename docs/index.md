@@ -8,6 +8,9 @@
 layout: home
 author: "Shiquan Sun, Jiaqiang Zhu and Xiang Zhou"
 date: '2019-06-08'
+fontsize: 12pt
+linkcolor: blue
+mainfont: Arial
 output:
 pdf_document: default
 html_document: default
