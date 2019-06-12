@@ -15,8 +15,6 @@ md_document:
 variant: markdown_github
 ---
 
-![iDEA\_pipeline](MethodOverview.png)
-
 ## Preparing input data
 ------------
 
