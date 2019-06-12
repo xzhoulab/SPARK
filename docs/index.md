@@ -35,7 +35,7 @@ Installation can then be done via the devtools package:
 library('devtools')
 devtools::install_github('xzhoulab/SPARK')
 ```
-Alternatively, installation can then be done from a local binary package from the shell:
+Alternatively, installation can then be done from the terminal:
 ```bash
 R CMD INSTALL SPARK_1.0.0.tar.gz
 ```
