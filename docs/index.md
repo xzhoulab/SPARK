@@ -71,7 +71,7 @@ Create a SPARK object for analysis. This step excludes the gene that are lowly e
     spark@counts   <- spark@counts[1:10,]
 ```
 
-Fit the statistical model under the null
+Fit the statistical model under the null hypothesis.
 ```R 
     ## Estimating Parameter Under Null
     spark <- spark.vc(spark, 
@@ -81,7 +81,7 @@ Fit the statistical model under the null
                        verbose = F)
 ```
 
-Test the spatially expressed pattern genes
+Test the spatially expressed pattern genes. By default, the kernel matrices are computed automatically, and check the positive definition of the kernel matrices. There is also a option to provide a kernel matrix by user.
 ```R 
     ## Calculating pval
     spark <- spark.test(spark, 
