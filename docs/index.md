@@ -28,16 +28,18 @@ Spatial Transcriptomics, or *in situ* gene expression measurements from
 e.g. SeqFISH, Merfish.
 
 
-### Analysis of Breast Cancer Data
+## Example: Breast Cancer Data
+
+Load the `SPARK` package and Breast cancer data set
 ```R
     library('SPARK')
     load("~/data/Layer2_BC_Count.rds")
      
-    ## rawcount matrix of genes by cells/spots
-    rawcount[1:5,1:5]
 ```
-
+View the expression count matrix `rawcount`, each row denotes a gene and each column represents a cell/spot
 ```R
+rawcount[1:5,1:5]
+
     17.907x4.967   18.965x5.003   18.954x5.995    17.846x5.993 20.016x6.019
 GAPDH   1   7   5   1   2
 USP4    1   0   0   0   0
@@ -46,14 +48,17 @@ CPEB1   0   0   0   0   0
 LANCL2  0   0   0   0   0
 ```
 
+Extract the annotation information for each sample, i.e., location or coordinates
 ```R   
     ## extract the coordinates from the rawdata
     info <- cbind.data.frame(x=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",1)),
                             y=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",2)),
                             total_counts=apply(rawcount,2,sum))
     rownames(info) <- colnames(rawcount)
-
-    ## filter genes and cells/spots and create the SPARK object for following analysis
+```
+Create a SPARK object for analysis. This step excludes the gene that are lowly expressed in each gene
+```R 
+    ## filter genes and cells/spots and 
     spark <- CreateSPARKObject(counts=rawcount, location=info[,1:2],
                                  prectage = 0.1, 
                                  min_total_counts = 10)
