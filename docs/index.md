@@ -48,6 +48,7 @@ R CMD INSTALL SPARK_1.0.0.tar.gz
     rawcount[1:5,1:5]
 ```
 
+
 |               | 17.907x4.967  | 18.965x5.003 | 18.954x5.995|17.846x5.993  |20.016x6.019  |
 | ------------- | ------------- |------------- |-------------|------------- |------------- |
 |GAPDH          |     1         |   7          |  5          |  1           |      2       |
@@ -55,6 +56,8 @@ R CMD INSTALL SPARK_1.0.0.tar.gz
 |MAPKAPK2       |     1         |   1          |  0          |  0           |      1       |
 |CPEB1          |     0         |   0          |  0          |  0           |      0       |
 |LANCL2         |     0         |   0          |  0          |  0           |      0       |
+
+
 ```R    
     ## extract the coordinates from the rawdata
     info <- cbind.data.frame(x=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",1)),
