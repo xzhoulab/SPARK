@@ -1,8 +1,8 @@
 # following https://github.com/jekyll/minima
 title: SPARK
 author: Shiquan Sun, Jiaqiang Zhu and Xiang Zhou
-email: xzhousph@umich.edu
-description: Statistical Analysis of Spatial Expression Pattern for Spatially Resolved Transcriptomic Studies
+email: shiquans@umich.edu and xzhousph@umich.edu
+description: Spatial PAttern Recognition via Kernels
 
 # Minima date format
 # refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
