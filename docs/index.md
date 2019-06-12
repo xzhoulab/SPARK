@@ -27,20 +27,6 @@ The intended applications are spatially resolved RNA-sequencing from e.g.
 Spatial Transcriptomics, or *in situ* gene expression measurements from
 e.g. SeqFISH, Merfish.
 
-## System requirements
-SPARK has been tested on R 3.3.1 and is platform independent (tested on Linux, OS X and Windows)
-Installation can then be done via the devtools package:
-
-```R
-library('devtools')
-devtools::install_github('xzhoulab/SPARK')
-```
-Alternatively, installation can then be done from the terminal:
-```bash
-R CMD INSTALL SPARK_1.0.0.tar.gz
-```
-
-
 
 ## Analysis of Breast Cancer Data
 ```R
