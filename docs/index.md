@@ -79,7 +79,7 @@ Fit the statistical model under the null hypothesis.
                        verbose = F)
 ```
 
-Test the spatially expressed pattern genes. By default, the kernel matrices are computed automatically, and check the positive definition of the kernel matrices. There is also an option to provide a kernel matrix by user.
+Test the spatially expressed pattern genes. By default, the kernel matrices are computed automatically by coordinates, and check the positive definition of the kernel matrices. There is also an option to provide a kernel matrix by user.
 ```R 
     ## Calculating pval
     spark <- spark.test(spark, 
