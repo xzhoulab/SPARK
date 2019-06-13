@@ -54,7 +54,7 @@ Extract the annotation information for each sample, i.e., location or coordinate
                              total_counts=apply(rawcount,2,sum))
     rownames(info) <- colnames(rawcount)
 ```
-Create a SPARK object for analysis. This step excludes the gene that are lowly expressed in each gene.
+Create a SPARK object for analysis. This step excludes the gene that are lowly expressed.
 ```R 
     ## filter genes and cells/spots and 
     spark <- CreateSPARKObject(counts=rawcount, 
