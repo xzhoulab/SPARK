@@ -1,0 +1,15 @@
+Package: SPARK
+Type: Package
+Title: Spatial PAttern Recognition via Kernels
+Version: 1.0.0
+Date: 2019-02-06
+Author: Shiquan Sun, Jiqiang Zhu and Xiang Zhou
+Maintainer: Shiquan Sun <shiquans@umich.edu>
+Description: SPARK is a new method for identifying spatial pattern genes. 
+License: GPL-3
+Imports: Rcpp (>= 1.0.0), RcppArmadillo, doParallel, doSNOW, pbmcapply, parallel, foreach, methods, utils, stats, CompQuadForm, Matrix
+LinkingTo: Rcpp, RcppArmadillo
+RoxygenNote: 6.1.1
+Suggests:
+    S4Vectors,
+    SingleCellExperiment
