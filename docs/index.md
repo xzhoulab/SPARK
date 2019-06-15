@@ -28,7 +28,7 @@ e.g., SeqFISH, or Merfish.
 
 ## Example: Breast Cancer Data
 
-Load the `SPARK` package and Breast cancer data set.
+Load the `SPARK` package and Breast cancer data set, which can be downloaded here [https://github.com/xzhoulab/SPARK/blob/master/data/Layer2_BC_Count.rds].
 ```R
     library('SPARK')
     load("~/data/Layer2_BC_Count.rds")
