@@ -31,7 +31,7 @@ e.g., SeqFISH, or Merfish.
 Load the `SPARK` package and Breast cancer data set, which can be downloaded [here](https://github.com/xzhoulab/SPARK/blob/master/data/Layer2_BC_Count.rds).
 ```R
     library('SPARK')
-    load("~/data/Layer2_BC_Count.rds")
+    load("./Layer2_BC_Count.rds")
      
 ```
 View the expression count matrix `rawcount`, each row denotes a gene and each column represents a cell/spot.
