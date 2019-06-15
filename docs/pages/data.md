@@ -1,10 +1,12 @@
 ---
 layout: page
-title: Datasets
+title: Experiments
 permalink: /data/
 ---
-  * [summary statistics](https://github.com/xzhoulab/iDEA/tree/master/data/summary.RData)
-  * [annotations](https://github.com/xzhoulab/iDEA/tree/master/data/annotation.RData)
+  # Data sets for experiments
+  * [All raw data](https://github.com/xzhoulab/SPARK-Analysis/tree/master/raw_data)
+  * [All processed data](https://github.com/xzhoulab/SPARK-Analysis/tree/master/processed_data)
   
-  * [Collected human gene specific annotations](https://github.com/xzhoulab/iDEA/tree/master/data/human.genesets.RData)
-  * [Collected mouse gene specific annotations](https://github.com/xzhoulab/iDEA/tree/master/data/mouse.genesets.RData)
+  # Code for experiments
+  * [Simulation](https://github.com/xzhoulab/SPARK-Analysis/tree/master/simulation)
+  * [Real data analysis](https://github.com/xzhoulab/SPARK-Analysis/tree/master/analysis)
