@@ -59,7 +59,7 @@ Create a SPARK object for analysis. This step excludes the gene that are lowly e
     ## filter genes and cells/spots and 
     spark <- CreateSPARKObject(counts=rawcount, 
                                  location=info[,1:2],
-                                 prectage = 0.1, 
+                                 percentage = 0.1, 
                                  min_total_counts = 10)
 
     ## total counts for each cell/spot
