@@ -87,6 +87,7 @@ spark.vc <- function(object,
   	registerDoSNOW(cl)
 	pb <- txtProgressBar(max = num_gene, style = 3)
   	progress <- function(n) setTxtProgressBar(pb, n)
+	opts <- list(progress = progress)
 	res_vc <-foreach(ig = 1:num_gene, .options.snow=opts)%dopar%{
 		if(num_cov==0){
 			model0 <- try(glm(formula = as.numeric(object@counts[ig,]) ~ 1 + offset(log(lib_size)), family = poisson(link="log")))
