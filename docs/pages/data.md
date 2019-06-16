@@ -12,7 +12,6 @@ permalink: /data/
   * [Real data analysis](https://github.com/xzhoulab/SPARK-Analysis/tree/master/analysis)
   
   ## Example
-  ## Example
 ```R
 rm(list = ls())
 source("./funcs/funcs.R")
@@ -36,5 +35,5 @@ pp <- lapply(1:3, function(x) {
 grid.arrange(grobs = pp, ncol = 3)
 
 ```
-![smmarized patterns from mouse olfactory bulb data](mouseOB_pattern.png)
+![SPARK\smmarized patterns from mouse olfactory bulb data](mouseOB_pattern.png)
 
