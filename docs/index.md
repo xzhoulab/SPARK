@@ -75,7 +75,7 @@ Fit the statistical model under the null hypothesis.
     spark <- spark.vc(spark, 
                        covariates = NULL, 
                        lib_size = spark@lib_size, 
-                       num_core = 1,
+                       num_core = 5,
                        verbose = F)
 ```
 
