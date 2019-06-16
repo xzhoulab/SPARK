@@ -46,6 +46,7 @@ spark.test <- function(object, kernel_mat = NULL, check_positive = TRUE, verbose
 	}else{# kernel_mat is a list provided by user
 		for(ikernel in 1:length(kernel_mat) ){
 			# pre-defined kernels
+			cat(paste0("## testing pre-defined kernel: ",ikernel,"...\n"))
 			object <- spark.test_each(object, kernel_mat=kernel_mat[[ikernel]], check_positive=check_positive, verbose=verbose)
 			res_pval <- cbind(res_pval, object@res_stest$sw)
 			res_kernel <- c(res_kernel, object@res_stest)
