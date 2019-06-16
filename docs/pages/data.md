@@ -35,5 +35,5 @@ pp <- lapply(1:3, function(x) {
 grid.arrange(grobs = pp, ncol = 3)
 
 ```
-![SPARK\smmarized patterns from mouse olfactory bulb data](mouseOB_pattern.png)
+![SPARK\docs\smmarized patterns from mouse olfactory bulb data](mouseOB_pattern.png)
 
