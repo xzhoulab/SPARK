@@ -66,7 +66,7 @@ Create a SPARK object for analysis. This step excludes the gene that are lowly e
     spark@lib_size <- apply(spark@counts, 2, sum)
 
     ## Take the first ten genes as an example
-    spark@counts   <- spark@counts[1:10,]
+    #spark@counts   <- spark@counts[1:10,]
 ```
 
 Fit the statistical model under the null hypothesis.
@@ -93,9 +93,9 @@ Output the final results, i.e., combined p-values, adjusted p-values, etc.
 head(spark@res_mtest[,c("combined_pvalue","adjusted_pvalue")])
 
     combined_pvalue   adjusted_pvalue
-GAPDH   7.477171e-09    1.683453e-07
-MAPKAPK2    1.016078e-01    5.952118e-01
-MCL1    1.149519e-08    1.683453e-07
+GAPDH   7.477171e-09    4.233403e-06
+MAPKAPK2    1.016078e-01    1.000000e+00
+MCL1    1.149519e-08    6.078909e-06
 TMEM109 4.303998e-01    1.000000e+00
 TMEM189 6.189064e-01    1.000000e+00
 ITPK1   7.213287e-01    1.000000e+00
