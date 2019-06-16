@@ -26,6 +26,7 @@ spark.test <- function(object, kernel_mat = NULL, check_positive = TRUE, verbose
     
 		for(ikernel in c(1:5) ){
 			# Gaussian kernel
+			cat(paste0("## testing Gaussian kernel: ",ikernel,"...\n"))
 			kernel_mat <- exp(-ED^2/(2*lrang[ikernel]^2))
 			object <- spark.test_each(object, kernel_mat=kernel_mat, check_positive=check_positive, verbose=verbose)
 			res_pval <- cbind(res_pval, object@res_stest$sw)
@@ -33,6 +34,7 @@ spark.test <- function(object, kernel_mat = NULL, check_positive = TRUE, verbose
 			rm(kernel_mat)
 
 			# Periodic kernel
+			cat(paste0("## testing Periodic kernel: ",ikernel,"...\n"))
 			kernel_mat <- cos(2*pi*ED/lrang[ikernel])
 			object <- spark.test_each(object, kernel_mat=kernel_mat, check_positive=check_positive, verbose=verbose)
 			res_pval <- cbind(res_pval, object@res_stest$sw)
@@ -74,6 +76,14 @@ spark.test_each <- function(object, kernel_mat, check_positive = FALSE, verbose 
     
   # The number of core used in testing step
   num_core <- object@num_core
+  # using parallel to correct
+  #library(doSNOW)
+  if(num_core > 1){
+       if(num_core > detectCores()){warning("SPARK:: the number of cores you're setting is larger than detected cores!");num_core = detectCores()}
+  }#end fi
+  cl <- makeCluster(num_core)
+  registerDoSNOW(cl)
+	
   num_cell <- ncol(object@counts)
   if(check_positive){# kernel matrix should be positive definition matrix
     # need to check positive definition before tesing
@@ -107,8 +117,12 @@ spark.test_each <- function(object, kernel_mat, check_positive = FALSE, verbose 
   num_gene_test <- length(object@res_vc)
   #========================================
   # using parallel to test variance components
-  registerDoParallel(cores = num_core)
-  res_test <-foreach(ig = 1:num_gene_test, .combine=rbind)%dopar%{
+  #registerDoParallel(cores = num_core)
+  pb <- txtProgressBar(max = num_gene_test, style = 3)
+  progress <- function(n) setTxtProgressBar(pb, n)
+  opts <- list(progress = progress)
+	
+  res_test <-foreach(ig = 1:num_gene_test, .combine=rbind, .options.snow=opts)%dopar%{
     if(verbose) {cat(paste("NO. Gene = ",ig,"\n"))}
     model1 <- object@res_vc[[ig]]
     
@@ -139,7 +153,8 @@ spark.test_each <- function(object, kernel_mat, check_positive = FALSE, verbose 
     #return( data.frame(geneid = names(object@res_vc)[ig], p_score = scaledchisq.pvalue, p_davies = p_davies, sw=davies_sw, converged=converged) )
     return( data.frame(geneid = names(object@res_vc)[ig], sw=davies_sw, converged=converged) )
   }# end parallel foreach
-  
+  close(pb)
+  stopCluster(cl)
   #######
   object@res_stest <- res_test
   rm(res_test)
