@@ -82,8 +82,12 @@ spark.vc <- function(object,
 	#=====================================
 	#=====================================
 	# do parallel using foreach function
-	registerDoParallel(cores = num_core)
-	res_vc <-foreach(ig = 1:num_gene)%dopar%{
+	#registerDoParallel(cores = num_core)
+	cl <- makeCluster(num_core)
+  	registerDoSNOW(cl)
+	pb <- txtProgressBar(max = num_gene, style = 3)
+  	progress <- function(n) setTxtProgressBar(pb, n)
+	res_vc <-foreach(ig = 1:num_gene, .options.snow=opts)%dopar%{
 		if(num_cov==0){
 			model0 <- try(glm(formula = as.numeric(object@counts[ig,]) ~ 1 + offset(log(lib_size)), family = poisson(link="log")))
 			idx <- match(rownames(model.frame(formula = as.numeric(object@counts[ig,]) ~ 1 + offset(log(lib_size)), na.action = na.omit)),rownames(model.frame(formula = as.numeric(object@counts[ig,]) ~ 1 + offset(log(lib_size)), na.action = na.pass)))
@@ -108,7 +112,9 @@ spark.vc <- function(object,
 		model1
 		########
 	}# end for ig, parallel
-
+	close(pb)
+  	stopCluster(cl)
+	
 	names(res_vc) <- rownames(object@counts)
 	object@res_vc <- res_vc
 	# return results
