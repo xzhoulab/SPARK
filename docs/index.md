@@ -100,5 +100,5 @@ TMEM109 4.303998e-01    1.000000e+00
 TMEM189 6.189064e-01    1.000000e+00
 ITPK1   7.213287e-01    1.000000e+00
 ```
-Draw the spatial patterns using differentially expressed genes
+Draw spatial patterns using differentially expressed genes
 ![SPARK\ pattern_genes](pattern_genes.png)
