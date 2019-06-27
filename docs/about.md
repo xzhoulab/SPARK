@@ -9,7 +9,7 @@ Importantly, SPARK relies on newly developed statistical formulas for hypothesis
 
 Cite `SPARK`
 -------------------
-Shiquan Sun, Jiaqiang Zhu and Xiang Zhou. *Statistical Analysis of Spatial Expression Pattern for Spatially Resolved Transcriptomic Studies*, BioRxiv, 2019. 
+Shiquan Sun, Jiaqiang Zhu and Xiang Zhou. *Statistical Analysis of Spatial Expression Pattern for Spatially Resolved Transcriptomic Studies*, 2019. 
 
 Our group
 -------------------
