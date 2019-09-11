@@ -6,7 +6,7 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 #
 layout: home
-author: "Shiquan Sun and Xiang Zhou"
+author: "Shiquan Sun, Jiaqiang Zhu and Xiang Zhou"
 date: '2019-02-08'
 output:
 pdf_document: default
