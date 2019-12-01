@@ -12,8 +12,6 @@ ComputeWeightsRcpp(Yin, num_kernelin, Phiin)
 \item{num_kernelin}{The number of kernel matrices,  10}
 
 \item{Phiin}{The kernel matrices and identity matrix,  10 + 1}
-
-\item{Xin}{Covariate matrix}
 }
 \value{
 A list

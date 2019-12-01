@@ -283,7 +283,6 @@ SEXP noCovariatesAI(SEXP Yin, SEXP Xin, SEXP Din, SEXP tauin, SEXP fixtauin, SEX
 //' 
 //' 
 //' @export
-// test each gene at a time
 // [[Rcpp::export]]
 SEXP ComputeTestQuantRcpp_nocov(SEXP yin, SEXP Pyin, SEXP cov_matin, SEXP Din, SEXP tauin)
 {
@@ -353,7 +352,6 @@ SEXP ComputeTestQuantRcpp_nocov(SEXP yin, SEXP Pyin, SEXP cov_matin, SEXP Din, S
 //' 
 //' 
 //' @export
-// test each gene at a time
 // [[Rcpp::export]]
 SEXP ComputeTestQuantRcpp_cov(SEXP yin, SEXP Pyin, SEXP Xin, SEXP cov_matin, SEXP Din, SEXP tauin)
 {
@@ -421,7 +419,6 @@ SEXP ComputeTestQuantRcpp_cov(SEXP yin, SEXP Pyin, SEXP Xin, SEXP cov_matin, SEX
 //' 
 //' 
 //' @export
-// test each gene at a time
 // [[Rcpp::export]]
 SEXP ComputeTestQuantRcpp_Gaussian(SEXP yin, SEXP Pyin, SEXP Xin, SEXP cov_matin, SEXP Din, SEXP tauin) {
   try {
@@ -490,7 +487,6 @@ SEXP ComputeTestQuantRcpp_Gaussian(SEXP yin, SEXP Pyin, SEXP Xin, SEXP cov_matin
 
 //' Compute the kernel weights using psedu-counts
 //' @param Yin Working vector
-//' @param Xin Covariate matrix
 //' @param num_kernelin The number of kernel matrices,  10
 //' @param Phiin The kernel matrices and identity matrix,  10 + 1 
 //' 

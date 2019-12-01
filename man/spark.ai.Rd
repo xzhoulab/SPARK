@@ -2,7 +2,8 @@
 % Please edit documentation in R/vcestimating.R
 \name{spark.ai}
 \alias{spark.ai}
-\title{Fitting the count-based spatial model using average information algorithm}
+\title{Fitting the count-based spatial model using average information algorithm
+Only for Poisson-based spatial model}
 \usage{
 spark.ai(model0, num_vc, tau = rep(0.1, num_vc + 1), fixtau = rep(0,
   num_vc + 1), maxiter = 500, tol = 1e-05, verbose = FALSE)
@@ -24,4 +25,5 @@ spark.ai(model0, num_vc, tau = rep(0.1, num_vc + 1), fixtau = rep(0,
 }
 \description{
 Fitting the count-based spatial model using average information algorithm
+Only for Poisson-based spatial model
 }

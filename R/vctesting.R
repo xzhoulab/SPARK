@@ -1,8 +1,8 @@
 ######################################################################
 # Package: SPARK
-# Version: 1.0.0
+# Version: 1.0.1
 # Date   : 2018-10-23
-# Modified: 2019-8-20 08:20:20;2019-8-10 19:24:50
+# Modified: 2019-5-20 08:20:20;2019-8-10 19:24:50
 # Title  : Count-based spatial model for identifying spatially variable genes
 # Authors: S.Q. Sun, J.Q. Zhu, and X. Zhou
 # Contacts: shiquans@umich.edu and jiaqiang@umich.edu 
@@ -121,6 +121,7 @@ spark.test_each <- function(object, kernel_mat, check_positive = FALSE, verbose 
 		#progress <- function(n) setTxtProgressBar(pb, n)
 		#opts <- list(progress = progress)
 		#res_test <-foreach(ig = 1:num_gene_test, .combine=rbind, .options.snow=opts)%dopar%{
+		ig <- 1
 		res_test <- foreach(ig = 1:num_gene_test, .combine=rbind)%dopar%{
 		#res_test <- NULL
 		#for(ig in 1:num_gene_test){

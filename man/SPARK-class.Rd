@@ -16,9 +16,13 @@ are listed below.
 
 \item{\code{scaled_counts}}{Scaled (default is variance stabilizing transformation for each gene) expression matrix; used for visualization}
 
+\item{\code{weights}}{The weights for combining p-values from multiple kernels}
+
 \item{\code{kernelmat}}{The kernel matrix for spatial gene recognization, a list}
 
 \item{\code{lib_size}}{The total read depth for each cell}
+
+\item{\code{fit_model}}{The model to be fitted, either "poisson" or "gaussian"}
 
 \item{\code{num_core}}{The number of core used in the package}
 

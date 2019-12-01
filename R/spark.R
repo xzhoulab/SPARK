@@ -1,9 +1,9 @@
 #####################################################################
 # Package: SPARK
-# Version: 1.0.0
-# Date   : 2018-10-23
+# Version: 1.0.1
+# Date : 2018-10-23
 # Modified: 2019-5-20 08:20:20;2019-8-16 09:50:02
-# Title  : Count-based spatial model for identifying spatially variable genes
+# Title : Count-based spatial model for identifying spatially variable genes
 # Authors: S.Q. Sun, J.Q. Zhu, and X. Zhou
 # Contacts: shiquans@umich.edu and jiaqiang@umich.edu 
 #          University of Michigan, Department of Biostatistics

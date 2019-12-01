@@ -5,47 +5,6 @@ rcpp_hello_world <- function() {
     .Call(`_SPARK_rcpp_hello_world`)
 }
 
-#' Compute the testing quantities without covariates, float format
-#' @param yin Working vector
-#' @param Pyin The vector P*y
-#' @param cov_matin Kernel matrix to be tested
-#' @param Din Weight for each gene
-#' @param tauin Initial value for variance component
-#' 
-#' @return A list
-#' 
-#' 
-#' @export
-NULL
-
-#' Compute the testing quantities with covariates, float format
-#' @param yin Working vector
-#' @param Pyin The vector P*y
-#' @param Xin Covariate matrix, including the intercept
-#' @param cov_matin Kernel matrix to be tested
-#' @param Din Weight for each gene
-#' @param tauin Initial value for variance component
-#' 
-#' @return A list
-#' 
-#' 
-#' @export
-NULL
-
-#' Compute the testing quantities for linear mixed model, float format
-#' @param yin Working vector
-#' @param Pyin The vector P*y
-#' @param Xin Covariate matrix, including the intercept
-#' @param cov_matin Kernel matrix to be tested
-#' @param Din Weight for each gene
-#' @param tauin Initial value for variance component
-#' 
-#' @return A list
-#' 
-#' 
-#' @export
-NULL
-
 #' Do inverse of sysmetric matrix 
 #' @param Min A sysmetric matrix
 #' 
@@ -98,21 +57,55 @@ noCovariatesAI <- function(Yin, Xin, Din, tauin, fixtauin, tolin) {
     .Call(`_SPARK_noCovariatesAI`, Yin, Xin, Din, tauin, fixtauin, tolin)
 }
 
+#' Compute the testing quantities without covariates, float format
+#' @param yin Working vector
+#' @param Pyin The vector P*y
+#' @param cov_matin Kernel matrix to be tested
+#' @param Din Weight for each gene
+#' @param tauin Initial value for variance component
+#' 
+#' @return A list
+#' 
+#' 
+#' @export
 ComputeTestQuantRcpp_nocov <- function(yin, Pyin, cov_matin, Din, tauin) {
     .Call(`_SPARK_ComputeTestQuantRcpp_nocov`, yin, Pyin, cov_matin, Din, tauin)
 }
 
+#' Compute the testing quantities with covariates, float format
+#' @param yin Working vector
+#' @param Pyin The vector P*y
+#' @param Xin Covariate matrix, including the intercept
+#' @param cov_matin Kernel matrix to be tested
+#' @param Din Weight for each gene
+#' @param tauin Initial value for variance component
+#' 
+#' @return A list
+#' 
+#' 
+#' @export
 ComputeTestQuantRcpp_cov <- function(yin, Pyin, Xin, cov_matin, Din, tauin) {
     .Call(`_SPARK_ComputeTestQuantRcpp_cov`, yin, Pyin, Xin, cov_matin, Din, tauin)
 }
 
+#' Compute the testing quantities for linear mixed model, float format
+#' @param yin Working vector
+#' @param Pyin The vector P*y
+#' @param Xin Covariate matrix, including the intercept
+#' @param cov_matin Kernel matrix to be tested
+#' @param Din Weight for each gene
+#' @param tauin Initial value for variance component
+#' 
+#' @return A list
+#' 
+#' 
+#' @export
 ComputeTestQuantRcpp_Gaussian <- function(yin, Pyin, Xin, cov_matin, Din, tauin) {
     .Call(`_SPARK_ComputeTestQuantRcpp_Gaussian`, yin, Pyin, Xin, cov_matin, Din, tauin)
 }
 
 #' Compute the kernel weights using psedu-counts
 #' @param Yin Working vector
-#' @param Xin Covariate matrix
 #' @param num_kernelin The number of kernel matrices,  10
 #' @param Phiin The kernel matrices and identity matrix,  10 + 1 
 #' 

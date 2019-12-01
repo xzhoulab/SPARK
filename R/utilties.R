@@ -1,7 +1,7 @@
 ########################################
 # Edited by Shiquan Sun
 # Date: 2018-12-29 07:48:59
-# Modified: 2019-8-28 10:53:55
+# Modified: 2019-4-28 11:53:55
 ##########################################
 
 #' Compute Gaussian kernel matrix
@@ -49,9 +49,9 @@ FilteringGenesCells <- function(counts, prectage_cell=0.1, min_total_counts=10){
 
 
 
-## Calculate Gaussian Parameter L based on Eculidean Distance
+#' Calculate Gaussian Parameter L based on Eculidean Distance
 #' @param X Cell corrdinates matrix n x 2 or kernel matrix computed already
-#' @param distance Compute the distance matrix using generic function dist
+#' @param compute_distance Compute the distance matrix using generic function dist, default=TRUE
 #' @export
 ComputeGaussianPL <- function(X, compute_distance=TRUE){
   if(compute_distance){
@@ -71,11 +71,10 @@ ComputeGaussianPL <- function(X, compute_distance=TRUE){
 
 
 
-## Summarized the multiple p-values via Cauchy combination rule
+#' Summarized the multiple p-values via Cauchy combination rule
 #' @param pvalues Pvalues from multiple kernels, a px10 matrix
 #' @param weights The weights for combining the pvalues from multiple kernels, a px10 matrix or NULL
 #' @export
-
 CombinePValues <- function(pvalues, weights=NULL){
 	if(!is.matrix(pvalues)){pvalues <- as.matrix(pvalues)}
 	## to avoid extremely values
@@ -102,9 +101,10 @@ CombinePValues <- function(pvalues, weights=NULL){
 }# end func
 
 
-## anscombe variance stabilizing transformation: NB
+#' Anscombe variance stabilizing transformation: NB
 #' @param counts gene expression count matrix
 #' @param sv normalization parameter
+#' @export
 NormalizeVST <- function(counts, sv = 1) {
     varx = apply(counts, 1, var)
     meanx = apply(counts, 1, mean)
