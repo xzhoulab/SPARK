@@ -7,7 +7,7 @@ e.g. SeqFISH, Merfish.
 
 How to cite `SPARK`
 -------------------
-Shiquan Sun, Jiaqiang Zhu and Xiang Zhou. *Statistical analysis of spatial expression pattern for spatially resolved transcriptomic studies, 2019, Nature Methods, in press. 
+Shiquan Sun, Jiaqiang Zhu and Xiang Zhou. *Statistical analysis of spatial expression pattern for spatially resolved transcriptomic studies*, 2019, Nature Methods, in press. 
 
 How to use `SPARK`
 -------------------
