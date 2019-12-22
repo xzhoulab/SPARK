@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <cstring>
-#include <omp.h>
+//#include <omp.h>
 
 
 using namespace std;
