@@ -2,7 +2,7 @@
 
 **SPARK** is an efficient method to identify genes with spatial expression pattern. 
 The intended applications are spatially resolved RNA-sequencing from e.g.
-Spatial Transcriptomics, or *in situ* gene expression measurements from
+Spatial Transcriptomics, slide-seq, or *in situ* gene expression measurements from
 e.g. seqFISH, MERFISH.
 
 How to cite `SPARK`
