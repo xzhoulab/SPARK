@@ -1,7 +1,7 @@
 ########################################
 # Edited by Shiquan Sun
 # Date: 2018-12-29 07:48:59
-# Modified: 2019-4-28 11:53:55
+# Modified: 2019-4-28 11:53:55;2020-2-8 00:56:23
 ##########################################
 
 #' Compute Gaussian kernel matrix
@@ -56,12 +56,13 @@ FilteringGenesCells <- function(counts, prectage_cell=0.1, min_total_counts=10){
 ComputeGaussianPL <- function(X, compute_distance=TRUE){
   if(compute_distance){
     if(ncol(X)<2){stop("X has to be a coordinate matrix with number of column greater than 1")}
-    D <- as.matrix(dist(X))  
+    D <- dist(X)
   }else{
     D <- X
   }# end fi
   
-  Dval <- unique(as.vector(D))
+  #Dval <- unique(as.vector(D))
+  Dval <- D
   Dval.nz <- Dval[Dval>1e-8]
   lmin <- min(Dval.nz)/2
   lmax <- max(Dval.nz)*2
