@@ -211,7 +211,7 @@ spark.test_each <- function(object, kernel_mat, check_positive = FALSE, verbose 
 		## calculate q = dim(ker(SKS) & col(S))
 		B <- cbind(kernel_mat, covariates)
 		q <- num_cell - sum(svd(B)$d > zeros_threshold)
-	 
+	 	if(q==0){q <- 1}
 		## calculate nominators
 		nominators <- apply((SKS%*%norm_counts) * norm_counts, 2, sum)
 		
