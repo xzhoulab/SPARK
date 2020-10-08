@@ -4,8 +4,7 @@
 \alias{spark.test}
 \title{Testing multiple kernel matrices}
 \usage{
-spark.test(object, kernel_mat = NULL, check_positive = TRUE,
-  verbose = TRUE)
+spark.test(object, kernel_mat = NULL, check_positive = TRUE, verbose = TRUE)
 }
 \arguments{
 \item{object}{SPARK object}

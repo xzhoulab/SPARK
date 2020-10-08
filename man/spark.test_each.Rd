@@ -4,8 +4,7 @@
 \alias{spark.test_each}
 \title{Testing one kernel matrix to identify spatial pattern}
 \usage{
-spark.test_each(object, kernel_mat, check_positive = FALSE,
-  verbose = TRUE)
+spark.test_each(object, kernel_mat, check_positive = FALSE, verbose = TRUE)
 }
 \arguments{
 \item{object}{SPARK object}

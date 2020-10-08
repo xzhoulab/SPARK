@@ -4,8 +4,13 @@
 \alias{CreateSPARKObject}
 \title{Create the SPARK object with filtering step}
 \usage{
-CreateSPARKObject(counts, location, project = "SPARK",
-  percentage = 0.1, min_total_counts = 10)
+CreateSPARKObject(
+  counts,
+  location,
+  project = "SPARK",
+  percentage = 0.1,
+  min_total_counts = 10
+)
 }
 \arguments{
 \item{counts}{Gene expression count matrix (data.frame), p x n -- p is the number of genes and n is the number of cells}

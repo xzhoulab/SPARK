@@ -1,6 +1,6 @@
 #####################################################################
 # Package: SPARK
-# Version: 1.0.1
+# Version: 1.0.2
 # Date : 2018-10-23
 # Modified: 2019-5-20 08:20:20;2019-8-16 09:50:02
 # Title : Count-based spatial model for identifying spatially variable genes
@@ -61,11 +61,11 @@ CreateSPARKObject <- function(counts, location, project = "SPARK", percentage = 
 		stop("The column names of counts and row names of location should be should be matched each other! (counts -- p x n; location -- n x 2)")
 	}# end fi
   
-	## convert into integer
-	counts <- apply(counts, 2, function(x){
-		x <- ceiling(x)
-		storage.mode(x) <- 'integer'
-		return(x) })
+	### convert into integer
+	#counts <- apply(counts, 2, function(x){
+	#	x <- ceiling(x)
+	#	storage.mode(x) <- 'integer'
+	#	return(x) })
   
 	## # check data fromat
 	#if(!is.data.frame(counts)){
@@ -73,9 +73,9 @@ CreateSPARKObject <- function(counts, location, project = "SPARK", percentage = 
 	#}# end fi
   
 	## store as sparse matrix
-	if(class(counts) != "dgCMatrix" ){
-		counts <- as(counts, "dgCMatrix")
-	}# end fi
+	#if(class(counts) != "dgCMatrix" ){
+	#	counts <- as(counts, "dgCMatrix")
+	#}# end fi
   
   
 	## inheriting

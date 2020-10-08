@@ -1,7 +1,7 @@
 ########################################
 # Edited by Shiquan Sun
 # Date: 2018-12-29 07:48:59
-# Modified: 2019-4-28 11:53:55
+# Modified: 2019-4-28 11:53:55;2020-2-8 00:56:23
 ##########################################
 
 #' Compute Gaussian kernel matrix
@@ -56,12 +56,13 @@ FilteringGenesCells <- function(counts, prectage_cell=0.1, min_total_counts=10){
 ComputeGaussianPL <- function(X, compute_distance=TRUE){
   if(compute_distance){
     if(ncol(X)<2){stop("X has to be a coordinate matrix with number of column greater than 1")}
-    D <- as.matrix(dist(X))  
+    D <- dist(X)
   }else{
     D <- X
   }# end fi
   
-  Dval <- unique(as.vector(D))
+  #Dval <- unique(as.vector(D))
+  Dval <- D
   Dval.nz <- Dval[Dval>1e-8]
   lmin <- min(Dval.nz)/2
   lmax <- max(Dval.nz)*2
@@ -116,6 +117,84 @@ NormalizeVST <- function(counts, sv = 1) {
 	res_norm_counts <- t(apply(norm_counts, 1, function(x){resid(lm(x ~ log(total_counts)))} ))
 	
     return(res_norm_counts)
+}# end func
+
+
+
+
+#' @title Combining P values for all kernels (Vector-Based)
+#' @param Pvals A vector of p values for all kernels
+#' @param Weights A vector of weights for all kernels
+#' @export
+ACAT <- function(Pvals,Weights=NULL){
+    #### check if there is NA
+    if (sum(is.na(Pvals))>0){
+        stop("Cannot have NAs in the p-values!")
+    }
+    #### check if Pvals are between 0 and 1
+    if ((sum(Pvals<0)+sum(Pvals>1))>0){
+        stop("P-values must be between 0 and 1!")
+    }
+    #### check if there are pvals that are either exactly 0 or 1.
+    is.zero<-(sum(Pvals==0)>=1)
+    is.one<-(sum(Pvals==1)>=1)
+    if (is.zero && is.one){
+        stop("Cannot have both 0 and 1 p-values!")
+    }
+    if (is.zero){
+        return(0)
+    }
+    if (is.one){
+        warning("There are p-values that are exactly 1!")
+        return(1)
+    }
+
+    #### Default: equal weights. If not, check the validity of the user supplied weights and standadize them.
+    if (is.null(Weights)){
+        Weights<-rep(1/length(Pvals),length(Pvals))
+    }else if (length(Weights)!=length(Pvals)){
+        stop("The length of weights should be the same as that of the p-values")
+    }else if (sum(Weights<0)>0){
+        stop("All the weights must be positive!")
+    }else{
+        Weights<-Weights/sum(Weights)
+    }
+
+
+    #### check if there are very small non-zero p values
+    is.small<-(Pvals<1e-16)
+    if (sum(is.small)==0){
+        cct.stat<-sum(Weights*tan((0.5-Pvals)*pi))
+    }else{
+        cct.stat<-sum((Weights[is.small]/Pvals[is.small])/pi)
+        cct.stat<-cct.stat+sum(Weights[!is.small]*tan((0.5-Pvals[!is.small])*pi))
+    }
+    #### check if the test statistic is very large.
+    if (cct.stat>1e+15){
+        pval<-(1/cct.stat)/pi
+    }else{
+        pval<-1-pcauchy(cct.stat)
+    }
+    return(pval)
+}
+
+
+#' @title Anscombe variance stabilizing transformation (Time Efficient)
+#' @param counts A p x n gene expression count matrix
+#' @param sv normalization parameter
+#' @export
+NormalizeVSTfast <- function(counts, sv = 1) {
+    varx = as.vector(sp_vars_Rcpp(counts, rowVars=TRUE))
+    meanx =  as.vector(sp_means_Rcpp(counts, rowMeans=TRUE))
+    phi = coef(nls(varx ~ meanx + phi * meanx^2, start = list(phi = sv)))
+  
+  ## regress out log total counts
+  norm_counts <- log(counts + 1/(2 * phi))
+  total_counts <- as.vector(sp_sums_Rcpp(counts, rowSums=FALSE))
+
+  res_norm_counts <- t(apply(norm_counts, 1, function(x){resid(lm(x ~ log(total_counts)))} ))
+  
+  return(res_norm_counts)
 }# end func
 
 

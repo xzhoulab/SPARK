@@ -4,8 +4,13 @@
 \alias{spark.weights}
 \title{Computing gene specific weights for combining multiple p-values}
 \usage{
-spark.weights(object, fit.model, kernel_mat = NULL,
-  check_positive = TRUE, verbose = TRUE)
+spark.weights(
+  object,
+  fit.model,
+  kernel_mat = NULL,
+  check_positive = TRUE,
+  verbose = TRUE
+)
 }
 \arguments{
 \item{object}{SPARK object}

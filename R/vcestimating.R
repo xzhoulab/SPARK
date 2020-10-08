@@ -1,8 +1,8 @@
 ########################################################################################################################
 # Package: SPARK
-# Version: 1.0.1
+# Version: 1.0.2
 # Date   : 2018-10-23
-# Modified: 2019-5-20 08:20:20;2019-8-10 19:24:50
+# Modified: 2019-5-20 08:20:20;2019-8-10 19:24:50; 2020-2-8 00:58:38
 # Title  : Count-based spatial model for identifying spatially variable genes
 # Authors: S.Q. Sun, J.Q. Zhu, and X. Zhou
 # Contacts: shiquans@umich.edu and jiaqiang@umich.edu 
@@ -283,13 +283,13 @@ spark.ai <- function(model0, num_vc, tau = rep(0.1, num_vc+1), fixtau = rep(0, n
 			## modified by sun, 2019-4-13 18:57:06
 			HinvX <- Hinv
 			XHinvX <- sum(HinvX)	
-			Py <- Hinv*Y - Hinv*(t(HinvX)%*%Y)/XHinvX
+			Py <- Hinv*Y - Hinv*as.numeric(t(HinvX)%*%Y)/XHinvX
 			diagP <- Hinv - HinvX*HinvX/XHinvX
   		
 			tau0 <- tau
 			# modified by sun, 2019-5-20 17:03:52
 			#PAPY <- crossprod(P, Py)
-			PAPY <- as.numeric( Hinv*Py - Hinv*(t(HinvX)%*%Py)/XHinvX)
+			PAPY <- as.numeric( Hinv*Py - Hinv*as.numeric(t(HinvX)%*%Py)/XHinvX)
 			for(ik in 1:num_cov_mat2){
 				##modified by sun, 2019-4-13 19:01:22
 				tau[idxtau[ik]] <- max(0, tau0[idxtau[ik]] + tau0[idxtau[ik]]^2 * (crossprod(Y, PAPY) - sum(diagP))/num_cell)

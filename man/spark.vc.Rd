@@ -4,9 +4,16 @@
 \alias{spark.vc}
 \title{Fitting the count-based spatial model to estimate the parameters}
 \usage{
-spark.vc(object, covariates = NULL, lib_size = NULL,
-  fit.maxiter = 500, fit.tol = 1e-05, fit.model = "poisson",
-  num_core = 1, verbose = FALSE)
+spark.vc(
+  object,
+  covariates = NULL,
+  lib_size = NULL,
+  fit.maxiter = 500,
+  fit.tol = 1e-05,
+  fit.model = "poisson",
+  num_core = 1,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{object}{SPARK object}
