@@ -8,7 +8,7 @@ sparkx(
   count_in,
   locus_in,
   X_in = NULL,
-  numCores,
+  numCores = 1,
   option = "mixture",
   verbose = TRUE
 )

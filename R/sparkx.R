@@ -11,7 +11,7 @@
 #' \item{res_stest}{A n x k matrix of P values for all kernels}
 #' \item{res_mtest}{A n x 2 matrix of combined P values and BY-adjusted P values}
 #' @export
-sparkx <- function(count_in,locus_in,X_in=NULL,numCores,option="mixture",verbose=TRUE){
+sparkx <- function(count_in,locus_in,X_in=NULL,numCores=1,option="mixture",verbose=TRUE){
 	if(is(count_in,"matrix")){
 		raw_count_mat 	<- as(as.matrix(count_in), "sparseMatrix")
 	}else if(is(count_in,"vector")){
@@ -23,19 +23,16 @@ sparkx <- function(count_in,locus_in,X_in=NULL,numCores,option="mixture",verbose
 	}
 	rm(count_in)
 	
-	# if(filter){
-	# 	totalcount 		<- as.vector(sp_sums_Rcpp(raw_count_mat))
-	# 	keep_cell_idx 	<- which(totalcount!=0)
 
-	# 	count_mat 		<- raw_count_mat[,keep_cell_idx]
-	# 	fil_loc 		<- locus_in[keep_cell_idx,]
+	totalcount 		<- as.vector(sp_sums_Rcpp(raw_count_mat))
+	keep_cell_idx 	<- which(totalcount!=0)
 
-	# 	keep_gene_idx   <- which(as.vector(sp_sums_Rcpp(count_mat,rowSums=TRUE))!=0)
-	# 	count_mat 		<- count_mat[keep_gene_idx,]
-	# }else{
-		count_mat 	<- raw_count_mat
-		fil_loc 	<- locus_in
-	# }
+	count_mat 		<- raw_count_mat[,keep_cell_idx]
+	fil_loc 		<- locus_in[keep_cell_idx,]
+	rm(raw_count_mat)
+
+	keep_gene_idx   <- which(as.vector(sp_sums_Rcpp(count_mat,rowSums=TRUE))!=0)
+	count_mat 		<- count_mat[keep_gene_idx,]
 
 	numGene 		<- nrow(count_mat)
 	numCell			<- ncol(count_mat)
