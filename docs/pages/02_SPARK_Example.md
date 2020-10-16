@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Example Analaysis with SPARK
+<!-- title: Example Analaysis with SPARK -->
 permalink: /02_SPARK_Example/
 ---
 
