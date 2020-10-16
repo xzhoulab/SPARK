@@ -47,8 +47,8 @@ grid.arrange(grobs = pp, ncol = 3)
 #### Code for experiments
 * [Simulations](https://github.com/xzhoulab/SPARK-X-Analysis/tree/main/simulation)
 * Real data analysis
-  * [HDST Analysis with SPARK-X] (http://htmlpreview.github.io/?https://github.com/xzhoulab/SPARK-X-Analysis/blob/main/analysis/HDST_SPARKX.html)
-  * [Slide-seq Analysis with SPARK-X] (http://htmlpreview.github.io/?https://github.com/xzhoulab/SPARK-X-Analysis/blob/main/analysis/SV1_SPARKX.html)
-  * [Slide-seqV2 Analysis with SPARK-X] (http://htmlpreview.github.io/?https://github.com/xzhoulab/SPARK-X-Analysis/blob/main/analysis/SV2_SPARKX.html)
+  * [HDST Analysis with SPARK-X](http://htmlpreview.github.io/?https://github.com/xzhoulab/SPARK-X-Analysis/blob/main/analysis/HDST_SPARKX.html)
+  * [Slide-seq Analysis with SPARK-X](http://htmlpreview.github.io/?https://github.com/xzhoulab/SPARK-X-Analysis/blob/main/analysis/SV1_SPARKX.html)
+  * [Slide-seqV2 Analysis with SPARK-X](http://htmlpreview.github.io/?https://github.com/xzhoulab/SPARK-X-Analysis/blob/main/analysis/SV2_SPARKX.html)
 
   
