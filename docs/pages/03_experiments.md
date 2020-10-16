@@ -4,15 +4,15 @@ title: Experiments
 permalink: /03_experiments/
 ---
 ### SPARK analysis
-  # Data sets for experiments
+#### Data sets for experiments
   * [All raw data](https://github.com/xzhoulab/SPARK-Analysis/tree/master/raw_data)
   * [All processed data](https://github.com/xzhoulab/SPARK-Analysis/tree/master/processed_data)
   
-  # Code for experiments
+#### Code for experiments
   * [Simulations](https://github.com/xzhoulab/SPARK-Analysis/tree/master/simulation)
   * [Real data analysis](https://github.com/xzhoulab/SPARK-Analysis/tree/master/analysis)
   
-  # Example
+#### Example
 ```R
 rm(list = ls())
 source("./funcs/funcs.R")
@@ -40,11 +40,15 @@ grid.arrange(grobs = pp, ncol = 3)
 
 
 ### SPARK-X analysis
-  # Data sets for experiments
-  * Raw data can be downloaded through the link listed in the manuscript
-  * [All processed data](https://github.com/xzhoulab/SPARK-X-Analysis/tree/main/processed_data)
+#### Data sets for experiments
+* Raw data can be downloaded through the link listed in the manuscript
+* [All processed data](https://github.com/xzhoulab/SPARK-X-Analysis/tree/main/processed_data)
 
-  # Code for experiments
-  * [Simulations](https://github.com/xzhoulab/SPARK-X-Analysis/tree/main/simulation)
-  * [Real data analysis](https://github.com/xzhoulab/SPARK-X-Analysis/tree/main/analysis)
+#### Code for experiments
+* [Simulations](https://github.com/xzhoulab/SPARK-X-Analysis/tree/main/simulation)
+* Real data analysis
+  * [HDST Analysis with SPARK-X] (http://htmlpreview.github.io/?https://github.com/xzhoulab/SPARK-X-Analysis/blob/main/analysis/HDST_SPARKX.html)
+  * [Slide-seq Analysis with SPARK-X] (http://htmlpreview.github.io/?https://github.com/xzhoulab/SPARK-X-Analysis/blob/main/analysis/SV1_SPARKX.html)
+  * [Slide-seqV2 Analysis with SPARK-X] (http://htmlpreview.github.io/?https://github.com/xzhoulab/SPARK-X-Analysis/blob/main/analysis/SV2_SPARKX.html)
 
+  
