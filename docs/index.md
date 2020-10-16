@@ -36,3 +36,4 @@ variant: markdown_github
 
 ![SPARKX\_pipeline](sparkx.png)
 **Recommend Application**: Sample size greater than 3,000, works well regardless of the sparsity structure
+**Example Analysis with SPARK-X**:[here](https://xzhoulab.github.io/SPARK/SPARK_Example/).

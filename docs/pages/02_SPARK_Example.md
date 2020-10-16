@@ -83,7 +83,7 @@ ITPK1   7.213287e-01    1.000000e+00
 
 ### Example Analysis with SPARK-X: HDST Data
 
-Load the `SPARK` package and HDST data set, which can be downloaded [here](https://github.com/xzhoulab/SPARK/blob/master/data/Layer2_BC_Count.rds).
+Load the `SPARK` package and HDST data set, which can be downloaded [here](https://github.com/xzhoulab/SPARK-X-Analysis/blob/main/processed_data/CN24_D1_unmodgtf_filtered_red_ut_HDST_final_clean.rds).
 ```R
     library('SPARK')
     load("./CN24_D1_unmodgtf_filtered_red_ut_HDST_final_clean.rds")
