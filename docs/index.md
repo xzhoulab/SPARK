@@ -19,7 +19,7 @@ variant: markdown_github
 ---
 
 
-###### SPARK Package
+# SPARK Package
 
 **SPARK** is a R package developed to identify genes with spatial expression pattern in spatially resolved transcriptomic studies. 
 
@@ -31,7 +31,7 @@ variant: markdown_github
 ![SPARK\_pipeline](Methods.png)
 
 **Recommend Application**: Sample size smaller than 3,000, with relatively low sparsity structure. 
-[**Example Analysis with SPARK: Breast Cancer Data**] (https://xzhoulab.github.io/SPARK/SPARK_Example/).
+**Example Analysis with SPARK: Breast Cancer Data**:[here](https://xzhoulab.github.io/SPARK/SPARK_Example/).
 
 ## SPARK-X
 *SPARK-X* builds upon a robust covariance test framework to model a wide variety of spatial transcriptomics data collected through different technologies. It relies on algebraic innovations for scalable computatation as well as newly developed statistical formulas for hypothesis testing, producing well-calibrated p-values and yielding high statistical power. SPARK-X is highly computationally efficient and the **only** SE method scalable for the HDST data.
