@@ -3,7 +3,7 @@ layout: page
 title: Experiments
 permalink: /03_experiments/
 ---
-  ### SPARK analysis
+### SPARK analysis
   # Data sets for experiments
   * [All raw data](https://github.com/xzhoulab/SPARK-Analysis/tree/master/raw_data)
   * [All processed data](https://github.com/xzhoulab/SPARK-Analysis/tree/master/processed_data)
@@ -37,4 +37,14 @@ grid.arrange(grobs = pp, ncol = 3)
 
 ```
 ![summarized patterns from mouse olfactory bulb](mouseOB_pattern.png)
+
+
+### SPARK-X analysis
+  # Data sets for experiments
+  * Raw data can be downloaded through the link listed in the manuscript
+  * [All processed data](https://github.com/xzhoulab/SPARK-X-Analysis/tree/main/processed_data)
+
+  # Code for experiments
+  * [Simulations](https://github.com/xzhoulab/SPARK-X-Analysis/tree/main/simulation)
+  * [Real data analysis](https://github.com/xzhoulab/SPARK-X-Analysis/tree/main/analysis)
 
