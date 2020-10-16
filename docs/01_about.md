@@ -10,7 +10,7 @@ permalink: /01_about/
 Cite `SPARK`
 -------------------
 Shiquan Sun\*, Jiaqiang Zhu\* and Xiang Zhou\#. *Statistical analysis of spatial expression pattern for spatially resolved transcriptomic studies*, 2020, Nature Methods, in press.   
-Jiaqiang Zhu\*, Shiquan Sun and Xiang Zhou\#. *Scalable and robust non-parametric detection of spatial expression patterns for large spatial transcriptomic studies.*, 2020
+Jiaqiang Zhu, Shiquan Sun and Xiang Zhou\#. *Scalable and robust non-parametric detection of spatial expression patterns for large spatial transcriptomic studies.*, 2020
 
 Our group
 -------------------
