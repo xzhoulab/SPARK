@@ -7,7 +7,7 @@
 #
 layout: home
 author: "Shiquan Sun, Jiaqiang Zhu and Xiang Zhou"
-date: '2019-06-08'
+date: '2020-10-15'
 fontsize: 10pt
 linkcolor: blue
 mainfont: Times
@@ -20,13 +20,11 @@ variant: markdown_github
 
 ![SPARK\_pipeline](Methods.png)
 
-## SPARK
+## SPARK and SPARK-X
 
-**SPARK** is an efficient method to identify genes with spatial expression pattern. The intended applications are spatially resolved RNA-sequencing from e.g., Spatial Transcriptomics, or *in situ* gene expression measurements from
-e.g., SeqFISH, or Merfish.
+**SPARK** and **SPARK-X** are methods for detecting genes with spatial expression patterns in spatially resolved transcriptomic studies. SPARK directly models count data generated from various spatial resolved transcriptomic techniques through generalized spatial linear models. While SPARK-X relies on a scalable non-parametric testing framework to model a wide variety of spatial transcriptomics data collected through different technologies. Both SPARK and SPARK-X rely on algebraic innovations for scalable computatation as well as newly developed statistical formulas for hypothesis testing, producing well-calibrated p-values and yielding high statistical power.
 
-
-## Example: Breast Cancer Data
+## Example Analysis with SPARK: Breast Cancer Data
 
 Load the `SPARK` package and Breast cancer data set, which can be downloaded [here](https://github.com/xzhoulab/SPARK/blob/master/data/Layer2_BC_Count.rds).
 ```R
