@@ -45,7 +45,7 @@ grid.arrange(grobs = pp, ncol = 3)
 * [All processed data](https://github.com/xzhoulab/SPARK-X-Analysis/tree/main/processed_data)
 
 #### Code for experiments
-* [Simulations](https://github.com/xzhoulab/SPARK-X-Analysis/tree/main/simulation)
+* [Simulations](https://github.com/xzhoulab/SPARK-X-Analysis/tree/main/simulation) with [example](http://htmlpreview.github.io/?https://github.com/xzhoulab/SPARK-X-Analysis/blob/main/simulation/hotspot_simulation_example.html)
 * Real data analysis
   * [HDST Analysis with SPARK-X](http://htmlpreview.github.io/?https://github.com/xzhoulab/SPARK-X-Analysis/blob/main/analysis/HDST_SPARKX.html)
   * [Slide-seq Analysis with SPARK-X](http://htmlpreview.github.io/?https://github.com/xzhoulab/SPARK-X-Analysis/blob/main/analysis/SV1_SPARKX.html)
