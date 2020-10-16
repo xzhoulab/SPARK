@@ -109,6 +109,7 @@ info <- cbind.data.frame(x=as.numeric(sapply(strsplit(colnames(sp_count),split="
 rownames(info)  <- colnames(sp_count)
 location        <- as.matrix(info)
 ```
+
 Removing mitochondrial genes
 ```R 
 mt_idx      <- grep("mt-",rownames(sp_count))
