@@ -1,8 +1,7 @@
 ---
 layout: page
 title: About
-permalink: /about/
-order: 1
+permalink: /01_about/
 ---
 `SPARK` is a statistical method for identifying spatial expression patterns. SPARK directly models raw count data generated from various spatial resolved transcriptomic techniques. With a new efficient penalized quasi-likelihood based algorithm, SPARK is scalable to data sets with tens of thousands of genes measured on tens of thousands of samples. 
 

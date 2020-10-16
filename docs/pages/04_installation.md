@@ -1,8 +1,7 @@
 ---
 layout: page
 title: Installation
-permalink: /installation/
-order: 4
+permalink: /04_installation/
 ---
 
 `SPARK` is implemented as an R package, which can be installed from GitHub by:

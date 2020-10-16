@@ -1,8 +1,7 @@
 ---
 layout: page
 title: Example Analaysis with SPARK
-permalink: /SPARK_Example/
-order: 2
+permalink: /02_SPARK_Example/
 ---
 
 ## Example Analysis with SPARK: Breast Cancer Data

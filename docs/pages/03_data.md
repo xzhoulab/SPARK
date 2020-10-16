@@ -1,8 +1,7 @@
 ---
 layout: page
 title: Experiments
-permalink: /data/
-order: 2
+permalink: /03_data/
 ---
 
   # Data sets for experiments
