@@ -2,6 +2,7 @@
 layout: page
 title: Installation
 permalink: /installation/
+order: 4
 ---
 
 `SPARK` is implemented as an R package, which can be installed from GitHub by:

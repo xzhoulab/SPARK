@@ -2,6 +2,7 @@
 layout: page
 title: Example Analaysis with SPARK
 permalink: /SPARK_Example/
+order: 2
 ---
 
 ## Example Analysis with SPARK: Breast Cancer Data

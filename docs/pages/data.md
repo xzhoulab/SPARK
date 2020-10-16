@@ -2,6 +2,7 @@
 layout: page
 title: Experiments
 permalink: /data/
+order: 2
 ---
 
   # Data sets for experiments
