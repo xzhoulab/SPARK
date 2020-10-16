@@ -19,7 +19,7 @@ variant: markdown_github
 ---
 
 
-<!-- # SPARK Package -->
+# SPARK Package
 **SPARK** is a R package developed to identify genes with spatial expression pattern in spatially resolved transcriptomic studies. 
 
 
