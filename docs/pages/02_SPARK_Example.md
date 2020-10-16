@@ -26,44 +26,44 @@ LANCL2  0   0   0   0   0
 
 Extract the annotation information for each sample, i.e., location or coordinates
 ```R   
-    ## extract the coordinates from the rawdata
-    info <- cbind.data.frame(x=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",1)),
-                             y=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",2)),
-                             total_counts=apply(rawcount,2,sum))
-    rownames(info) <- colnames(rawcount)
+## extract the coordinates from the rawdata
+info <- cbind.data.frame(x=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",1)),
+                         y=as.numeric(sapply(strsplit(colnames(rawcount),split="x"),"[",2)),
+                         total_counts=apply(rawcount,2,sum))
+rownames(info) <- colnames(rawcount)
 ```
 Create a SPARK object for analysis. This step excludes the gene that are lowly expressed.
 ```R 
-    ## filter genes and cells/spots and 
-    spark <- CreateSPARKObject(counts=rawcount, 
-                                 location=info[,1:2],
-                                 percentage = 0.1, 
-                                 min_total_counts = 10)
+## filter genes and cells/spots and 
+spark <- CreateSPARKObject(counts=rawcount, 
+                             location=info[,1:2],
+                             percentage = 0.1, 
+                             min_total_counts = 10)
 
-    ## total counts for each cell/spot
-    spark@lib_size <- apply(spark@counts, 2, sum)
+## total counts for each cell/spot
+spark@lib_size <- apply(spark@counts, 2, sum)
 
-    ## Take the first ten genes as an example
-    #spark@counts   <- spark@counts[1:10,]
+## Take the first ten genes as an example
+#spark@counts   <- spark@counts[1:10,]
 ```
 
 Fit the statistical model under the null hypothesis.
 ```R 
-    ## Estimating Parameter Under Null
-    spark <- spark.vc(spark, 
-                       covariates = NULL, 
-                       lib_size = spark@lib_size, 
-                       num_core = 5,
-                       verbose = F)
+## Estimating Parameter Under Null
+spark <- spark.vc(spark, 
+                   covariates = NULL, 
+                   lib_size = spark@lib_size, 
+                   num_core = 5,
+                   verbose = F)
 ```
 
 Test the spatially expressed pattern genes. By default, the kernel matrices are computed automatically by coordinates, and check the positive definition of the kernel matrices. There is also an option to provide a kernel matrix by user.
 ```R 
-    ## Calculating pval
-    spark <- spark.test(spark, 
-                         check_positive = T, 
-                         verbose = F)
-    
+## Calculating pval
+spark <- spark.test(spark, 
+                     check_positive = T, 
+                     verbose = F)
+
 ```
 
 Output the final results, i.e., combined p-values, adjusted p-values, etc. 
@@ -103,39 +103,38 @@ Celf2          .        .        .        .        .
 
 View the coordinates information `location`, each row denotes a gene and each column represents a spot.
 ```R   
-    ## extract the coordinates from the rawdata
-    info <- cbind.data.frame(x=as.numeric(sapply(strsplit(colnames(sp_count),split="x"),"[",1)),
-                             y=as.numeric(sapply(strsplit(colnames(sp_count),split="x"),"[",2)))
-    rownames(info)  <- colnames(sp_count)
-    location        <- as.matrix(info)
+## extract the coordinates from the rawdata
+info <- cbind.data.frame(x=as.numeric(sapply(strsplit(colnames(sp_count),split="x"),"[",1)),
+                         y=as.numeric(sapply(strsplit(colnames(sp_count),split="x"),"[",2)))
+rownames(info)  <- colnames(sp_count)
+location        <- as.matrix(info)
 ```
 Removing mitochondrial genes
 ```R 
-    mt_idx      <- grep("mt-",rownames(sp_count))
-    if(length(mt_idx)!=0){
-        sp_count    <- sp_count[-mt_idx,]
-    }
+mt_idx      <- grep("mt-",rownames(sp_count))
+if(length(mt_idx)!=0){
+    sp_count    <- sp_count[-mt_idx,]
+}
 ```
 
 Analyze the data with SPARK-X
 ```R 
-    sparkX <- sparkx(sp_count,location,numCores=1,option="mixture")
-
-    ## ===== SPARK-X INPUT INFORMATION ==== 
-    ## number of total samples: 177455 
-    ## number of total genes: 19913 
-    ## Running with single core, may take some time 
-    ## Testing With Projection Kernel
-    ## Testing With Gaussian Kernel 1
-    ## Testing With Gaussian Kernel 2
-    ## Testing With Gaussian Kernel 3
-    ## Testing With Gaussian Kernel 4
-    ## Testing With Gaussian Kernel 5
-    ## Testing With Cosine Kernel 1
-    ## Testing With Cosine Kernel 2
-    ## Testing With Cosine Kernel 3
-    ## Testing With Cosine Kernel 4
-    ## Testing With Cosine Kernel 5
+sparkX <- sparkx(sp_count,location,numCores=1,option="mixture")
+## ===== SPARK-X INPUT INFORMATION ==== 
+## number of total samples: 177455 
+## number of total genes: 19913 
+## Running with single core, may take some time 
+## Testing With Projection Kernel
+## Testing With Gaussian Kernel 1
+## Testing With Gaussian Kernel 2
+## Testing With Gaussian Kernel 3
+## Testing With Gaussian Kernel 4
+## Testing With Gaussian Kernel 5
+## Testing With Cosine Kernel 1
+## Testing With Cosine Kernel 2
+## Testing With Cosine Kernel 3
+## Testing With Cosine Kernel 4
+## Testing With Cosine Kernel 5
 ```
 
 Output the final results, i.e., combined p-values, adjusted p-values, etc. 
