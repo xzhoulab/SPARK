@@ -4,7 +4,7 @@ title: Example Analaysis
 permalink: /02_SPARK_Example/
 ---
 
-## Example Analysis with SPARK: Breast Cancer Data
+### Example Analysis with SPARK: Breast Cancer Data
 
 Load the `SPARK` package and Breast cancer data set, which can be downloaded [here](https://github.com/xzhoulab/SPARK/blob/master/data/Layer2_BC_Count.rds).
 ```R
