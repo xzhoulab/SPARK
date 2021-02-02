@@ -6,11 +6,12 @@ permalink: /02_SPARK_Example/
 
 ### Example Analysis with SPARK: Breast Cancer Data
 
-Load the `SPARK` package and Breast cancer data set, which can be downloaded [here](https://github.com/xzhoulab/SPARK/blob/master/data/Layer2_BC_Count.rds).
+Load the `SPARK` package and Breast cancer dataset (included with the package;
+can be also downloaded [here](https://github.com/xzhoulab/SPARK/blob/master/inst/extdata/Layer2_BC_Count.rds)).
+
 ```R
     library('SPARK')
-    load("./Layer2_BC_Count.rds")
-     
+    load(system.file("extdata", "Layer2_BC_Count.rds", package = "SPARK"))
 ```
 View the expression count matrix `rawcount`, each row denotes a gene and each column represents a cell/spot.
 ```R
