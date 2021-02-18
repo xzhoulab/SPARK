@@ -19,7 +19,7 @@ sparkg_sw <- function(counts,location,verbose=FALSE){
     count_mat     <- counts[,-cell_rm_idx]
     location_mat  <- location[-cell_rm_idx,]
   }else{
-    count_mat     <- sp_sim_count
+    count_mat     <- counts
     location_mat  <- location
   }
 

@@ -169,13 +169,15 @@ spark.test_each <- function(object, kernel_mat, check_positive = FALSE, verbose 
 		norm_counts <- t(object@scaled_counts)
 		covariates <- object@res_vc$covariates
 		## check data format
-		if(class(kernel_mat) != "matrix"){
+		# if(class(kernel_mat) != "matrix"){
+		if(!is(kernel_mat, "matrix")){
 			kernel_mat <- as.matrix(kernel_mat)
 		}# end fi
 		
 		if(ncol(kernel_mat) != nrow(kernel_mat)){stop("kernel_mat is a square matrix")}
 		num_cell <- nrow(kernel_mat)
-		if(class(norm_counts) != "matrix"){
+		# if(class(norm_counts) != "matrix"){
+		if(!is(norm_counts, "matrix")){
 			norm_counts <- as.matrix(norm_counts)
 		}# end fi
 		if(nrow(norm_counts) != num_cell){

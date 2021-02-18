@@ -1,8 +1,8 @@
 Package: SPARK
 Type: Package
 Title: Spatial Pattern Recognition via Kernels
-Version: 1.1.0
-Date: 2020-10-07
+Version: 1.1.1
+Date: 2021-02-18
 Author: Shiquan Sun, Jiaqiang Zhu, and Xiang Zhou
 Maintainer: Jiaqiang Zhu <jiaqiang@umich.edu>
 Description: SPARK is an efficient tool for identifying spatial expression patterns. SPARK directly models raw count data generated from various spatial resolved transcriptomic techniques. With a new efficient penalized quasi-likelihood based algorithm, SPARK is scalable to data sets with tens of thousands of genes measured on thousands of samples. Build upon a non-parametric framework, SPARK-X is scalable to large-scale data sets with tens of thousands of genes measured on hundred thousands of samples.
@@ -10,5 +10,4 @@ License: GPL-3
 Depends: R (>= 3.4.0), methods
 Imports: Rcpp (>= 1.0.5),foreach,doParallel,parallel,Matrix,CompQuadForm,matlab,pracma
 LinkingTo: Rcpp, RcppArmadillo
-NeedsCompilation: yes
 RoxygenNote: 7.1.1
