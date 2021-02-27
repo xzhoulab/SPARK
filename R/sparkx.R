@@ -23,12 +23,17 @@ sparkx <- function(count_in,locus_in,X_in=NULL,numCores=1,option="mixture",verbo
 	}
 	rm(count_in)
 	
+	locus_in 		<- as.matrix(locus_in)
 
 	totalcount 		<- as.vector(sp_sums_Rcpp(raw_count_mat))
 	keep_cell_idx 	<- which(totalcount!=0)
 
 	count_mat 		<- raw_count_mat[,keep_cell_idx]
 	fil_loc 		<- locus_in[keep_cell_idx,]
+
+	if(!is.null(X_in)){
+		X_in <- X_in[keep_cell_idx,]
+	}
 	rm(raw_count_mat)
 
 	keep_gene_idx   <- which(as.vector(sp_sums_Rcpp(count_mat,rowSums=TRUE))!=0)
