@@ -123,7 +123,10 @@ sparkx.sk <- function(counts,infomat,X_mat=NULL,mc_cores=1,verbose=TRUE){
 
 	if(is.null(X_mat)){	
 		Xinfomat 		<- apply(infomat,2,scale,scale=FALSE)
-		loc_inv 		<- solve(t(infomat) %*% infomat)
+		
+		# loc_inv 		<- solve(t(infomat) %*% infomat)
+		loc_inv 		<- solve(crossprod(Xinfomat,Xinfomat))
+
 		kmat_first 		<- Xinfomat %*% loc_inv
 
 		LocDim 			<- ncol(infomat)
@@ -149,13 +152,16 @@ sparkx.sk <- function(counts,infomat,X_mat=NULL,mc_cores=1,verbose=TRUE){
 		XTX_inv 			<- solve(crossprod(X_mat,X_mat))
 		Xadjust_mat 		<- crossprod(infomat,X_mat)%*%crossprod(XTX_inv,t(X_mat))
 		Xinfomat 			<- infomat - t(Xadjust_mat)
-		info_inv 			<- solve(crossprod(infomat,infomat))
+
+		# info_inv 			<- solve(crossprod(infomat,infomat))
+		info_inv 			<- solve(crossprod(Xinfomat,Xinfomat))
+
 		kmat_first 			<- Xinfomat %*% info_inv
 		LocDim 				<- ncol(Xinfomat)
 
-		Klam 			<- eigen(crossprod(Xinfomat,kmat_first), only.values=T)$values
+		Klam 				<- eigen(crossprod(Xinfomat,kmat_first), only.values=T)$values
 
-		res_sparkx_list 		<- mclapply(X=1:nrow(counts),FUN=sparkx.sksg,
+		res_sparkx_list 	<- mclapply(X=1:nrow(counts),FUN=sparkx.sksg,
 								expmat= counts,
 								xmat = X_mat,
 								scaleinfo = Xinfomat,
@@ -242,13 +248,48 @@ sparkx_pval <- function(igene,lambda_G,lambda_K,allstat){
 
 
 
+# #' @title Transforming the coordinate 
+# #' @param coord A n-vector of coordinate
+# #' @param lker A index of smoothing or periodic parameter
+# #' @param transfunc A description of coordinate transform function
+# #' @export
+# transloc_func <- function(coord,lker,transfunc="gaussian"){
+# 	l  		<- quantile(coord,probs=seq(0.1,0.9,by=0.2))
+# 	if(transfunc=="gaussian"){
+# 		out <- exp(-coord^2/(2*l[lker]^2))
+# 	}else if(transfunc=="cosine"){
+# 		out <- cos(2*pi*coord/l[lker])
+# 	}
+# 	return(out)
+# }
+
+
+# #' @title Transforming the coordinate 
+# #' @param coord A n-vector of coordinate
+# #' @param lker A index of smoothing or periodic parameter
+# #' @param transfunc A description of coordinate transform function
+# #' @export
+# transloc_func <- function(coord,lker,transfunc="gaussian"){
+# 	l  		<- quantile(abs(coord),probs=seq(0.1,0.9,by=0.2))
+# 	if(transfunc=="gaussian"){
+# 		out <- exp(-coord^2/(2*l[lker]^2))
+# 	}else if(transfunc=="cosine"){
+# 		out <- cos(2*pi*coord/l[lker])
+# 	}
+# 	return(out)
+# }
+
+
 #' @title Transforming the coordinate 
 #' @param coord A n-vector of coordinate
 #' @param lker A index of smoothing or periodic parameter
 #' @param transfunc A description of coordinate transform function
 #' @export
 transloc_func <- function(coord,lker,transfunc="gaussian"){
-	l  		<- quantile(coord,probs=seq(0.1,0.9,by=0.2))
+	## for the simulation 
+	coord <- scale(coord,scale=F)
+
+	l  		<- quantile(abs(coord),probs=seq(0.2,1,by=0.2))
 	if(transfunc=="gaussian"){
 		out <- exp(-coord^2/(2*l[lker]^2))
 	}else if(transfunc=="cosine"){
@@ -256,3 +297,81 @@ transloc_func <- function(coord,lker,transfunc="gaussian"){
 	}
 	return(out)
 }
+
+
+
+#' @title Combining P values for all kernels (Vector-Based)
+#' @param Pvals A vector of p values for all kernels
+#' @param Weights A vector of weights for all kernels
+#' @export
+ACAT <- function(Pvals,Weights=NULL){
+    #### check if there is NA
+    if (sum(is.na(Pvals))>0){
+        stop("Cannot have NAs in the p-values!")
+    }
+    #### check if Pvals are between 0 and 1
+    if ((sum(Pvals<0)+sum(Pvals>1))>0){
+        stop("P-values must be between 0 and 1!")
+    }
+    #### check if there are pvals that are either exactly 0 or 1.
+    is.zero<-(sum(Pvals==0)>=1)
+    is.one<-(sum(Pvals==1)>=1)
+    if (is.zero && is.one){
+        stop("Cannot have both 0 and 1 p-values!")
+    }
+    if (is.zero){
+        return(0)
+    }
+    if (is.one){
+        warning("There are p-values that are exactly 1!")
+        return(1)
+    }
+
+    #### Default: equal weights. If not, check the validity of the user supplied weights and standadize them.
+    if (is.null(Weights)){
+        Weights<-rep(1/length(Pvals),length(Pvals))
+    }else if (length(Weights)!=length(Pvals)){
+        stop("The length of weights should be the same as that of the p-values")
+    }else if (sum(Weights<0)>0){
+        stop("All the weights must be positive!")
+    }else{
+        Weights<-Weights/sum(Weights)
+    }
+
+
+    #### check if there are very small non-zero p values
+    is.small<-(Pvals<1e-16)
+    if (sum(is.small)==0){
+        cct.stat<-sum(Weights*tan((0.5-Pvals)*pi))
+    }else{
+        cct.stat<-sum((Weights[is.small]/Pvals[is.small])/pi)
+        cct.stat<-cct.stat+sum(Weights[!is.small]*tan((0.5-Pvals[!is.small])*pi))
+    }
+    #### check if the test statistic is very large.
+    if (cct.stat>1e+15){
+        pval<-(1/cct.stat)/pi
+    }else{
+        pval<-1-pcauchy(cct.stat)
+    }
+    return(pval)
+}
+
+
+#' @title Anscombe variance stabilizing transformation (Time Efficient)
+#' @param counts A p x n gene expression count matrix
+#' @param sv normalization parameter
+#' @export
+NormalizeVSTfast <- function(counts, sv = 1) {
+    varx = as.vector(sp_vars_Rcpp(counts, rowVars=TRUE))
+    meanx =  as.vector(sp_means_Rcpp(counts, rowMeans=TRUE))
+    phi = coef(nls(varx ~ meanx + phi * meanx^2, start = list(phi = sv)))
+  
+  ## regress out log total counts
+  norm_counts <- log(counts + 1/(2 * phi))
+  total_counts <- as.vector(sp_sums_Rcpp(counts, rowSums=FALSE))
+
+  res_norm_counts <- t(apply(norm_counts, 1, function(x){resid(lm(x ~ log(total_counts)))} ))
+  
+  return(res_norm_counts)
+}# end func
+

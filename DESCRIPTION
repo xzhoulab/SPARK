@@ -1,7 +1,7 @@
 Package: SPARK
 Type: Package
 Title: Spatial Pattern Recognition via Kernels
-Version: 1.1.2
+Version: 1.1.1
 Date: 2021-02-18
 Author: Shiquan Sun, Jiaqiang Zhu, and Xiang Zhou
 Maintainer: Jiaqiang Zhu <jiaqiang@umich.edu>
