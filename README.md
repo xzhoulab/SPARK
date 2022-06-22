@@ -1,5 +1,7 @@
 ## SPARK
 
+![Visitor Count](https://profile-counter.glitch.me/{xzhoulab}/count.svg)
+
 **SPARK** is an efficient method to identify genes with spatial expression pattern. 
 The intended applications are spatially resolved RNA-sequencing from e.g.
 Spatial Transcriptomics, slide-seq, or *in situ* gene expression measurements from
