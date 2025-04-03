@@ -95,7 +95,7 @@ CreateSPARKObject <- function(counts, location, project = "SPARK", percentage = 
 	## filtering out lowly expressed genes
 	if(percentage > 0){
 		gene_use <- which( rowSums(object.counts > 0) >= floor(percentage*ncol(object.counts)) )
-		object.counts	<- object.counts[gene_use, ]
+		object.counts	<- object.counts[gene_use, , drop=FALSE]
 	}# end fi
   
 	## filter cells that are quite a few number of genes expressed
